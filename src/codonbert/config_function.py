@@ -1,9 +1,13 @@
 import os
 import warnings
+from datetime import date
+
 import numpy as np
 from tensorboardX import SummaryWriter
 import torch.nn.functional as FC
 import torch
+
+from . import _PACKAGEDIR
 
 warnings.filterwarnings("ignore")
 
@@ -44,10 +48,12 @@ N_EPOCHS = 320
 lr_init = 3e-4
 batch_size = 12
 is_binary = False
-CodonBERT_path = '.'
-writer = SummaryWriter(CodonBERT_path+'logs/2023_0726/train_epoch320-batch12')
-valid_writer = SummaryWriter(CodonBERT_path+'logs/2023_0726/valid_epoch320-batch12')
-ACC_writer = SummaryWriter(CodonBERT_path+'logs/2023_0726/acc_epoch320-batch1')
+CodonBERT_path = str(_PACKAGEDIR)
+today = str(date.today())
+
+writer = SummaryWriter(CodonBERT_path+f'logs/{today}/train_epoch320-batch12')
+valid_writer = SummaryWriter(CodonBERT_path+f'logs/{today}/valid_epoch320-batch12')
+ACC_writer = SummaryWriter(CodonBERT_path+f'logs/{today}/acc_epoch320-batch1')
 tensorboard_ind = 0
 valid_tensorboard_ind = 0
 ACC_tensorboard_ind = 0
