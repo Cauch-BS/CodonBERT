@@ -1,0 +1,31 @@
+[project]
+name = "codonbert"
+version = "0.0.1"
+description = "CodonBERT, a Codon Optimizer for mRNA Vaccine Design"
+dependencies = [
+    "torch == 2.4.1",
+    "biopython ==1.81",
+    "numpy == 1.26.4",
+    "pandas == 2.2.0",
+    "ViennaRNA == 2.6.4",
+    "tqdm == 4.65.0",
+    "tensorboardx == 2.6",
+    "scikit-learn==1.2.1",
+    "einops==0.6.0"
+]
+requires-python = ">=3.10"
+
+[project.scripts]
+bert-train = "codonbert.train:main"
+codon-opt = "codonbert.predict:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["codonbert", "codonbert.models"]
+
+[tool.setuptools.package-data]
+"codonbert" = ["models/*"]
+
+[build-system]
+requires = ["setuptools >= 40.8.0", "wheel"]
+build-backend = "setuptools.build_meta"

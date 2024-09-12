@@ -1,0 +1,2 @@
+# Include everything inside models/ and scripts/
+include src/codonbert/models/*.pt
